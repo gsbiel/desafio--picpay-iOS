@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window!.windowScene = windowScene
         
-        let viewController = ViewController()
+        let viewController = ContactsViewController()
         
         window!.rootViewController = viewController
         

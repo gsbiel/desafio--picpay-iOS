@@ -9,9 +9,15 @@
 /* Begin PBXBuildFile section */
 		891363072409AE37000287A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891363062409AE37000287A5 /* AppDelegate.swift */; };
 		891363092409AE37000287A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891363082409AE37000287A5 /* SceneDelegate.swift */; };
-		8913630B2409AE37000287A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8913630A2409AE37000287A5 /* ViewController.swift */; };
+		8913630B2409AE37000287A5 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8913630A2409AE37000287A5 /* ContactsViewController.swift */; };
 		891363102409AE3A000287A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8913630F2409AE3A000287A5 /* Assets.xcassets */; };
 		891363132409AE3A000287A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 891363112409AE3A000287A5 /* LaunchScreen.storyboard */; };
+		8933519C2409B738002881C3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933519B2409B738002881C3 /* Constants.swift */; };
+		8933519E2409B7C1002881C3 /* ContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933519D2409B7C1002881C3 /* ContactsView.swift */; };
+		893351A02409B839002881C3 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933519F2409B839002881C3 /* Contact.swift */; };
+		893351A22409B857002881C3 /* ContactsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893351A12409B857002881C3 /* ContactsManager.swift */; };
+		893351A52409B883002881C3 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893351A42409B883002881C3 /* Card.swift */; };
+		893351A72409B895002881C3 /* CardsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893351A62409B895002881C3 /* CardsManager.swift */; };
 		C71642FB050E69DE125665EA /* Pods_picpay_challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62F28EE168B78C6DB70B579C /* Pods_picpay_challenge.framework */; };
 /* End PBXBuildFile section */
 
@@ -20,10 +26,16 @@
 		891363032409AE37000287A5 /* picpay-challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "picpay-challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		891363062409AE37000287A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		891363082409AE37000287A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8913630A2409AE37000287A5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8913630A2409AE37000287A5 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		8913630F2409AE3A000287A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		891363122409AE3A000287A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		891363142409AE3A000287A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8933519B2409B738002881C3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8933519D2409B7C1002881C3 /* ContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsView.swift; sourceTree = "<group>"; };
+		8933519F2409B839002881C3 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		893351A12409B857002881C3 /* ContactsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsManager.swift; sourceTree = "<group>"; };
+		893351A42409B883002881C3 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		893351A62409B895002881C3 /* CardsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsManager.swift; sourceTree = "<group>"; };
 		B7358281CF1BA4D0E0E34FBF /* Pods-picpay-challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-picpay-challenge.debug.xcconfig"; path = "Target Support Files/Pods-picpay-challenge/Pods-picpay-challenge.debug.xcconfig"; sourceTree = "<group>"; };
 		C66092342CF920922D0CBCA0 /* Pods-picpay-challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-picpay-challenge.release.xcconfig"; path = "Target Support Files/Pods-picpay-challenge/Pods-picpay-challenge.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,12 +84,50 @@
 			children = (
 				891363062409AE37000287A5 /* AppDelegate.swift */,
 				891363082409AE37000287A5 /* SceneDelegate.swift */,
-				8913630A2409AE37000287A5 /* ViewController.swift */,
+				893351972409B693002881C3 /* Model */,
+				893351982409B6A6002881C3 /* View */,
+				893351992409B6B0002881C3 /* Controller */,
+				8933519B2409B738002881C3 /* Constants.swift */,
+				8933519A2409B703002881C3 /* Services */,
 				8913630F2409AE3A000287A5 /* Assets.xcassets */,
 				891363112409AE3A000287A5 /* LaunchScreen.storyboard */,
 				891363142409AE3A000287A5 /* Info.plist */,
 			);
 			path = "picpay-challenge";
+			sourceTree = "<group>";
+		};
+		893351972409B693002881C3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8933519F2409B839002881C3 /* Contact.swift */,
+				893351A12409B857002881C3 /* ContactsManager.swift */,
+				893351A42409B883002881C3 /* Card.swift */,
+				893351A62409B895002881C3 /* CardsManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		893351982409B6A6002881C3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8933519D2409B7C1002881C3 /* ContactsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		893351992409B6B0002881C3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8913630A2409AE37000287A5 /* ContactsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8933519A2409B703002881C3 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		E0219001A9642F4BD3164F98 /* Frameworks */ = {
@@ -202,9 +252,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8913630B2409AE37000287A5 /* ViewController.swift in Sources */,
+				893351A02409B839002881C3 /* Contact.swift in Sources */,
+				8913630B2409AE37000287A5 /* ContactsViewController.swift in Sources */,
 				891363072409AE37000287A5 /* AppDelegate.swift in Sources */,
+				893351A72409B895002881C3 /* CardsManager.swift in Sources */,
 				891363092409AE37000287A5 /* SceneDelegate.swift in Sources */,
+				8933519E2409B7C1002881C3 /* ContactsView.swift in Sources */,
+				8933519C2409B738002881C3 /* Constants.swift in Sources */,
+				893351A22409B857002881C3 /* ContactsManager.swift in Sources */,
+				893351A52409B883002881C3 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
