@@ -27,6 +27,15 @@ class ContactsView: UIView {
         return label
     }()
     
+    lazy var contactsCV: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 24, left: 20, bottom: -24, right: -20)
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.translatesAutoresizingMaskIntoConstraints = false
+        cv.backgroundColor = .white
+        return cv
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -39,6 +48,7 @@ class ContactsView: UIView {
     
     private func setupView() {
         contactsView.addSubview(contactLabel)
+        contactsView.addSubview(contactsCV)
         self.addSubview(contactsView)
         setupLayout()
     }
@@ -56,6 +66,12 @@ class ContactsView: UIView {
         contactLabel.leftAnchor.constraint(equalTo: contactsView.leftAnchor, constant: 20).isActive = true
         contactLabel.rightAnchor.constraint(equalTo: contactsView.rightAnchor, constant: -20).isActive = true
         contactLabel.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        
+        // contactsCV constraints
+        contactsCV.topAnchor.constraint(equalTo: contactsView.topAnchor).isActive = true
+        contactsCV.bottomAnchor.constraint(equalTo: contactsView.bottomAnchor).isActive = true
+        contactsCV.leftAnchor.constraint(equalTo: contactsView.leftAnchor).isActive = true
+        contactsCV.rightAnchor.constraint(equalTo: contactsView.rightAnchor).isActive = true
     }
     
     override class var requiresConstraintBasedLayout: Bool {
