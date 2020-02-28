@@ -3,14 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		891363072409AE37000287A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891363062409AE37000287A5 /* AppDelegate.swift */; };
 		891363092409AE37000287A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891363082409AE37000287A5 /* SceneDelegate.swift */; };
 		8913630B2409AE37000287A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8913630A2409AE37000287A5 /* ViewController.swift */; };
-		8913630E2409AE37000287A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8913630C2409AE37000287A5 /* Main.storyboard */; };
 		891363102409AE3A000287A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8913630F2409AE3A000287A5 /* Assets.xcassets */; };
 		891363132409AE3A000287A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 891363112409AE3A000287A5 /* LaunchScreen.storyboard */; };
 		C71642FB050E69DE125665EA /* Pods_picpay_challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62F28EE168B78C6DB70B579C /* Pods_picpay_challenge.framework */; };
@@ -22,7 +21,6 @@
 		891363062409AE37000287A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		891363082409AE37000287A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		8913630A2409AE37000287A5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		8913630D2409AE37000287A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8913630F2409AE3A000287A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		891363122409AE3A000287A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		891363142409AE3A000287A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,7 +46,6 @@
 				B7358281CF1BA4D0E0E34FBF /* Pods-picpay-challenge.debug.xcconfig */,
 				C66092342CF920922D0CBCA0 /* Pods-picpay-challenge.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -76,7 +73,6 @@
 				891363062409AE37000287A5 /* AppDelegate.swift */,
 				891363082409AE37000287A5 /* SceneDelegate.swift */,
 				8913630A2409AE37000287A5 /* ViewController.swift */,
-				8913630C2409AE37000287A5 /* Main.storyboard */,
 				8913630F2409AE3A000287A5 /* Assets.xcassets */,
 				891363112409AE3A000287A5 /* LaunchScreen.storyboard */,
 				891363142409AE3A000287A5 /* Info.plist */,
@@ -154,7 +150,6 @@
 			files = (
 				891363132409AE3A000287A5 /* LaunchScreen.storyboard in Resources */,
 				891363102409AE3A000287A5 /* Assets.xcassets in Resources */,
-				8913630E2409AE37000287A5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,14 +211,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8913630C2409AE37000287A5 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8913630D2409AE37000287A5 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		891363112409AE3A000287A5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -363,7 +350,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "gaspers.picpay-challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -381,7 +368,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "gaspers.picpay-challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
