@@ -10,4 +10,9 @@ import Foundation
 
 struct Contact {
     
+    let id: Int
+    let name: String
+    let img: String
+    let username: String
+    
 }

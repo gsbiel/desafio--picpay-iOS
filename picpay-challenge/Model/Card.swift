@@ -9,5 +9,8 @@
 import Foundation
 
 struct Card {
-    
+    let cardNumber: String
+    let cardOwner: String
+    let cvv: Int
+    let expiryDate: String
 }
