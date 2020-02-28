@@ -10,13 +10,17 @@ import UIKit
 
 class ContactsViewController: UIViewController {
 
+    private var contactLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.view.backgroundColor = UIColor.green
+        let contactsView = ContactsView(frame: UIScreen.main.bounds)
+        
+        self.view.addSubview(contactsView)
+        
+        contactLabel = contactsView.contactLabel
         
     }
-
-
 }
 
