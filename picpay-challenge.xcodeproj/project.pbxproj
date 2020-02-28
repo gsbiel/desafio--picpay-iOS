@@ -13,9 +13,11 @@
 		8913630E2409AE37000287A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8913630C2409AE37000287A5 /* Main.storyboard */; };
 		891363102409AE3A000287A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8913630F2409AE3A000287A5 /* Assets.xcassets */; };
 		891363132409AE3A000287A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 891363112409AE3A000287A5 /* LaunchScreen.storyboard */; };
+		C71642FB050E69DE125665EA /* Pods_picpay_challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62F28EE168B78C6DB70B579C /* Pods_picpay_challenge.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		62F28EE168B78C6DB70B579C /* Pods_picpay_challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_picpay_challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		891363032409AE37000287A5 /* picpay-challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "picpay-challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		891363062409AE37000287A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		891363082409AE37000287A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +26,8 @@
 		8913630F2409AE3A000287A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		891363122409AE3A000287A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		891363142409AE3A000287A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B7358281CF1BA4D0E0E34FBF /* Pods-picpay-challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-picpay-challenge.debug.xcconfig"; path = "Target Support Files/Pods-picpay-challenge/Pods-picpay-challenge.debug.xcconfig"; sourceTree = "<group>"; };
+		C66092342CF920922D0CBCA0 /* Pods-picpay-challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-picpay-challenge.release.xcconfig"; path = "Target Support Files/Pods-picpay-challenge/Pods-picpay-challenge.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C71642FB050E69DE125665EA /* Pods_picpay_challenge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		083D0AC45C7DFDB1B216D959 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B7358281CF1BA4D0E0E34FBF /* Pods-picpay-challenge.debug.xcconfig */,
+				C66092342CF920922D0CBCA0 /* Pods-picpay-challenge.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		891362FA2409AE37000287A5 = {
 			isa = PBXGroup;
 			children = (
 				891363052409AE37000287A5 /* picpay-challenge */,
 				891363042409AE37000287A5 /* Products */,
+				083D0AC45C7DFDB1B216D959 /* Pods */,
+				E0219001A9642F4BD3164F98 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +84,14 @@
 			path = "picpay-challenge";
 			sourceTree = "<group>";
 		};
+		E0219001A9642F4BD3164F98 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				62F28EE168B78C6DB70B579C /* Pods_picpay_challenge.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 891363172409AE3A000287A5 /* Build configuration list for PBXNativeTarget "picpay-challenge" */;
 			buildPhases = (
+				82040B837253B4E1F1E6FB67 /* [CP] Check Pods Manifest.lock */,
 				891362FF2409AE37000287A5 /* Sources */,
 				891363002409AE37000287A5 /* Frameworks */,
 				891363012409AE37000287A5 /* Resources */,
+				D2AF3D4D59838BB7517FA6AE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,6 +159,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		82040B837253B4E1F1E6FB67 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-picpay-challenge-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D2AF3D4D59838BB7517FA6AE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-picpay-challenge/Pods-picpay-challenge-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-picpay-challenge/Pods-picpay-challenge-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-picpay-challenge/Pods-picpay-challenge-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		891362FF2409AE37000287A5 /* Sources */ = {
@@ -282,6 +351,7 @@
 		};
 		891363182409AE3A000287A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7358281CF1BA4D0E0E34FBF /* Pods-picpay-challenge.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -299,6 +369,7 @@
 		};
 		891363192409AE3A000287A5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C66092342CF920922D0CBCA0 /* Pods-picpay-challenge.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
