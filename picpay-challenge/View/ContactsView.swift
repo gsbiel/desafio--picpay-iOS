@@ -29,10 +29,13 @@ class ContactsView: UIView {
     
     lazy var contactsCV: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 24, left: 20, bottom: -24, right: -20)
+        //layout.sectionInset = UIEdgeInsets(top: 24, left: 0, bottom: 24, right: 0)
+        layout.sectionHeadersPinToVisibleBounds = true
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.backgroundColor = .white
+        cv.register(UICollectionViewCell.self, forCellWithReuseIdentifier: K.contactsViewCellIdentifier)
+        cv.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: K.contactsViewHeaderIdentifier)
         return cv
     }()
     

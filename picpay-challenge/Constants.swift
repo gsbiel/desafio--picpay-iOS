@@ -9,5 +9,7 @@
 import Foundation
 
 struct K {
+    static let contactsViewHeaderIdentifier = "contactsCollectionViewHeaderClass"
+    static let contactsViewCellIdentifier = "basicCell"
     
 }
