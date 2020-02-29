@@ -18,15 +18,6 @@ class ContactsView: UIView {
         return container
     }()
     
-    lazy var contactLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor.white
-        label.text = "Contatos"
-        label.font = UIFont.boldSystemFont(ofSize: 28)
-        return label
-    }()
-    
     lazy var contactsCV: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         //layout.sectionInset = UIEdgeInsets(top: 24, left: 0, bottom: 24, right: 0)
@@ -35,7 +26,8 @@ class ContactsView: UIView {
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.backgroundColor = .white
         cv.register(UICollectionViewCell.self, forCellWithReuseIdentifier: K.contactsViewCellIdentifier)
-        cv.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: K.contactsViewHeaderIdentifier)
+        cv.register(ContactHeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: K.contactsViewContactHeaderIdentifier)
+        cv.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: K.contactsViewBasicReusableHeaderView)
         return cv
     }()
     
@@ -50,7 +42,6 @@ class ContactsView: UIView {
     }
     
     private func setupView() {
-        contactsView.addSubview(contactLabel)
         contactsView.addSubview(contactsCV)
         self.addSubview(contactsView)
         setupLayout()
@@ -63,12 +54,6 @@ class ContactsView: UIView {
         contactsView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor).isActive = true
         contactsView.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor).isActive = true
         contactsView.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor).isActive = true
-        
-        // contactLabel constraints
-        contactLabel.topAnchor.constraint(equalTo: contactsView.topAnchor).isActive = true
-        contactLabel.leftAnchor.constraint(equalTo: contactsView.leftAnchor, constant: 20).isActive = true
-        contactLabel.rightAnchor.constraint(equalTo: contactsView.rightAnchor, constant: -20).isActive = true
-        contactLabel.heightAnchor.constraint(equalToConstant: 32).isActive = true
         
         // contactsCV constraints
         contactsCV.topAnchor.constraint(equalTo: contactsView.topAnchor).isActive = true

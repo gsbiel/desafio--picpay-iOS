@@ -20,7 +20,6 @@ class ContactsViewController: UIViewController {
         
         self.view.addSubview(contactsView)
         
-        contactLabel = contactsView.contactLabel
         contactsCV = contactsView.contactsCV
         
         contactsCV.delegate = self
@@ -55,9 +54,17 @@ extension ContactsViewController: UICollectionViewDelegateFlowLayout, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: K.contactsViewHeaderIdentifier , for: indexPath)
-        header.backgroundColor = indexPath.section == 0 ? UIColor.orange : UIColor.gray
-        return header
+        
+        if kind == UICollectionView.elementKindSectionHeader && indexPath.section == 0 {
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: K.contactsViewContactHeaderIdentifier , for: indexPath) as! ContactHeaderCell
+            header.contactHeaderLabel.text = "Contatos"
+            return header
+            
+        }else{
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: K.contactsViewBasicReusableHeaderView, for: indexPath)
+            header.backgroundColor = UIColor.gray
+            return header
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
