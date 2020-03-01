@@ -24,9 +24,10 @@ class ContactsView: UIView {
         layout.sectionHeadersPinToVisibleBounds = true
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.backgroundColor = .white
+//        cv.backgroundColor = .white
+        cv.backgroundView = ContactsBackGroundView()
         cv.register(UICollectionViewCell.self, forCellWithReuseIdentifier: K.contactsViewCellIdentifier)
-        cv.register(ContactHeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: K.contactsViewContactHeaderIdentifier)
+//        cv.register(ContactHeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: K.contactsViewContactHeaderIdentifier)
         cv.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: K.contactsViewBasicReusableHeaderView)
         return cv
     }()
