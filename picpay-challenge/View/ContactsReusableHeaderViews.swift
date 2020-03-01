@@ -27,32 +27,6 @@ class BaseCollectionReusableView: UICollectionReusableView {
     }
 }
 
-class ContactHeaderCell: BaseCollectionReusableView {
-    
-    lazy var contactHeaderLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor.white
-        label.text = "Contatos"
-        label.font = UIFont.boldSystemFont(ofSize: 28)
-        return label
-    }()
-    
-    override func setupView() {
-        self.backgroundColor = .black
-        self.addSubview(contactHeaderLabel)
-        setupLayout()
-    }
-    
-    private func setupLayout() {
-        // contactLabel constraints
-        contactHeaderLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        contactHeaderLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
-        contactHeaderLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-        contactHeaderLabel.heightAnchor.constraint(equalToConstant: 32).isActive = true
-    }
-}
-
 class SearchContactHeaderCell: BaseCollectionReusableView {
     
     lazy var textField: UITextField = {

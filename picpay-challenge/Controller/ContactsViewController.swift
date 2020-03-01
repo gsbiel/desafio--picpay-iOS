@@ -66,7 +66,7 @@ extension ContactsViewController: UICollectionViewDelegateFlowLayout, UICollecti
         }else{
             
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: K.contactsViewBasicReusableHeaderView, for: indexPath)
-            header.backgroundColor = UIColor.black
+            header.backgroundColor = UIColor.gray
             return header
             
         }
