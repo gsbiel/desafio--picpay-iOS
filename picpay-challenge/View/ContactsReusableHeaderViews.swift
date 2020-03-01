@@ -55,6 +55,13 @@ class ContactHeaderCell: BaseCollectionReusableView {
 
 class SearchContactHeaderCell: BaseCollectionReusableView {
     
+    lazy var textField: UITextField = {
+        let txtfld = UITextField()
+        txtfld.translatesAutoresizingMaskIntoConstraints = false
+        txtfld.backgroundColor = MyUtilityFunctions.hexColor(hexString: "#2B2C2F")
+        return txtfld
+    }()
+    
     override func setupView() {
         
         setupLayout()
