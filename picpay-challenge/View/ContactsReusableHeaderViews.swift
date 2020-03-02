@@ -29,6 +29,13 @@ class BaseCollectionReusableView: UICollectionReusableView {
 
 class SearchContactHeaderCell: BaseCollectionReusableView {
     
+    lazy var container: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .black
+        return view
+    }()
+    
     lazy var textField: UITextField = {
         let txtfld = UITextField()
         txtfld.translatesAutoresizingMaskIntoConstraints = false
@@ -37,11 +44,19 @@ class SearchContactHeaderCell: BaseCollectionReusableView {
     }()
     
     override func setupView() {
-        
+        container.addSubview(textField)
+        self.addSubview(container)
         setupLayout()
     }
     
     func setupLayout() {
+        // container constraints
+        container.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        container.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        container.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        container.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         
+        //textField constraints
+//        textFirl
     }
 }
