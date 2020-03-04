@@ -65,8 +65,10 @@ extension ContactsViewController: UICollectionViewDelegateFlowLayout, UICollecti
             
         }else{
             
-            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: K.contactsViewBasicReusableHeaderView, for: indexPath)
-            header.backgroundColor = UIColor.gray
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: K.contactsViewSearchHeaderIdentifier, for: indexPath) as! SearchContactHeaderCell
+            
+            header.textField.delegate = self
+            
             return header
             
         }
@@ -77,10 +79,20 @@ extension ContactsViewController: UICollectionViewDelegateFlowLayout, UICollecti
             return CGSize(width: collectionView.bounds.width, height: 50)
         }
         else {
-            return CGSize(width: collectionView.bounds.width, height: 40)
+            return CGSize(width: collectionView.bounds.width, height: 46)
         }
     }
     
+}
+
+extension ContactsViewController: UITextFieldDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print("Parei de editar!")
+    }
 }
 
 

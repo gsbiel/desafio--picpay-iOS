@@ -27,7 +27,7 @@ class ContactsView: UIView {
 //        cv.backgroundColor = .white
         cv.backgroundView = ContactsBackGroundView()
         cv.register(UICollectionViewCell.self, forCellWithReuseIdentifier: K.contactsViewCellIdentifier)
-//        cv.register(ContactHeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: K.contactsViewContactHeaderIdentifier)
+        cv.register(SearchContactHeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: K.contactsViewSearchHeaderIdentifier)
         cv.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: K.contactsViewBasicReusableHeaderView)
         return cv
     }()

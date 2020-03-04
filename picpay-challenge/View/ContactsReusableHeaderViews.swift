@@ -40,10 +40,26 @@ class SearchContactHeaderCell: BaseCollectionReusableView {
         let txtfld = UITextField()
         txtfld.translatesAutoresizingMaskIntoConstraints = false
         txtfld.backgroundColor = MyUtilityFunctions.hexColor(hexString: "#2B2C2F")
+        txtfld.placeholder = K.searchTxtFieldPlaceHolder
+        txtfld.layer.cornerRadius = 20
+        txtfld.backgroundColor = UIColor(red: 0.167, green: 0.173, blue: 0.183, alpha: 1)
+//        txtfld.
         return txtfld
     }()
     
+    lazy var searchIcon: UIImageView = {
+        let icon = UIImageView()
+        icon.translatesAutoresizingMaskIntoConstraints = false
+        icon.contentMode = .scaleAspectFit
+        let imageIcon = UIImage(named: K.searchIconName)!.withRenderingMode(.alwaysTemplate)
+        icon.image = imageIcon
+        return icon
+    }()
+    
     override func setupView() {
+        textField.leftViewMode = .always
+        textField.leftView = searchIcon
+        textField.addSubview(searchIcon)
         container.addSubview(textField)
         self.addSubview(container)
         setupLayout()
@@ -57,6 +73,15 @@ class SearchContactHeaderCell: BaseCollectionReusableView {
         container.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         
         //textField constraints
-//        textFirl
+        textField.topAnchor.constraint(equalTo: container.topAnchor, constant: 3).isActive = true
+        textField.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -3).isActive = true
+        textField.leftAnchor.constraint(equalTo: container.leftAnchor, constant: 16).isActive = true
+        textField.rightAnchor.constraint(equalTo: container.rightAnchor, constant: -16).isActive = true
+        
+        // searchIcon
+        searchIcon.heightAnchor.constraint(equalToConstant: 15).isActive = true
+        searchIcon.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        //searchIcon.leftAnchor.constraint(equalTo: textField.leftAnchor, constant: 20).isActive = true
+        
     }
 }
