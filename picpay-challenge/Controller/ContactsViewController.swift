@@ -13,6 +13,9 @@ class ContactsViewController: UIViewController {
     private var contactLabel: UILabel!
     private var contactsCV: UICollectionView!
     private var scaleFactor: CGFloat!
+    private var headerTextField: UITextField!
+    
+    private var isKeyboardActive: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +29,45 @@ class ContactsViewController: UIViewController {
         
         contactsCV.delegate = self
         contactsCV.dataSource = self
+        
+        let gestureSensor = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.view.addGestureRecognizer(gestureSensor)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        registerForKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        unregisterForKeyboardNotifications()
+    }
+    
+    private func registerForKeyboardNotifications() {
+        let center = NotificationCenter.default
+        center.addObserver(self, selector: #selector(keyBoardWillBeShown(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        center.addObserver(self, selector: #selector(keyBoardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    private func unregisterForKeyboardNotifications() {
+        let center = NotificationCenter.default
+        center.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        center.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc private func keyBoardWillBeShown(_ notification: Notification) {
+        print("Keyboard opening...")
+        isKeyboardActive = true
+    }
+    
+    @objc private func keyBoardWillHide(_ notification: Notification) {
+        print("KeyBoard closing...")
+        isKeyboardActive = false
+    }
+    
+    @objc private func dismissKeyboard() {
+        if isKeyboardActive {
+            headerTextField.endEditing(true)
+        }
     }
 }
 
@@ -68,6 +110,7 @@ extension ContactsViewController: UICollectionViewDelegateFlowLayout, UICollecti
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: K.contactsViewSearchHeaderIdentifier, for: indexPath) as! SearchContactHeaderCell
             
             header.textField.delegate = self
+            self.headerTextField = header.textField
             
             return header
             
@@ -86,13 +129,32 @@ extension ContactsViewController: UICollectionViewDelegateFlowLayout, UICollecti
 }
 
 extension ContactsViewController: UITextFieldDelegate {
+    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        highLightTextField(textField)
         return true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        print("Parei de editar!")
+        removeTextFieldHighlight(textField)
+        dismissKeyboard()
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
+    private func highLightTextField(_ textField: UITextField) {
+        textField.tintColor = UIColor.white
+        textField.layer.borderWidth = 1.0
+        textField.layer.borderColor = UIColor.white.cgColor
+    }
+    
+    private func removeTextFieldHighlight(_ textField: UITextField) {
+        textField.tintColor = UIColor(red: 0.673, green: 0.695, blue: 0.742, alpha: 1)
+        textField.layer.borderColor = UIColor(red: 0.673, green: 0.695, blue: 0.742, alpha: 1).cgColor
+    }
+
 }
 
 

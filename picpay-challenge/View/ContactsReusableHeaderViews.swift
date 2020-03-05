@@ -41,6 +41,8 @@ class SearchContactHeaderCell: BaseCollectionReusableView {
         txtfld.translatesAutoresizingMaskIntoConstraints = false
         txtfld.backgroundColor = MyUtilityFunctions.hexColor(hexString: "#2B2C2F")
         txtfld.placeholder = K.searchTxtFieldPlaceHolder
+        txtfld.textColor = .white
+        txtfld.tintColor = UIColor(red: 0.673, green: 0.695, blue: 0.742, alpha: 1)
         txtfld.layer.cornerRadius = 20
         txtfld.backgroundColor = UIColor(red: 0.167, green: 0.173, blue: 0.183, alpha: 1)
 //        txtfld.
