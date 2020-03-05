@@ -132,11 +132,13 @@ extension ContactsViewController: UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         highLightTextField(textField)
+        setEraseIconVisibility(of: textField, to: 1.0)
         return true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         removeTextFieldHighlight(textField)
+        setEraseIconVisibility(of: textField, to: 0)
         dismissKeyboard()
     }
     
@@ -153,6 +155,10 @@ extension ContactsViewController: UITextFieldDelegate {
     private func removeTextFieldHighlight(_ textField: UITextField) {
         textField.tintColor = UIColor(red: 0.673, green: 0.695, blue: 0.742, alpha: 1)
         textField.layer.borderColor = UIColor(red: 0.673, green: 0.695, blue: 0.742, alpha: 1).cgColor
+    }
+    
+    private func setEraseIconVisibility(of textField: UITextField, to visibility: CGFloat){
+        textField.rightView?.alpha = visibility
     }
 
 }

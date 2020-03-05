@@ -58,12 +58,30 @@ class SearchContactHeaderCell: BaseCollectionReusableView {
         return icon
     }()
     
+    lazy var eraseIcon: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "x"
+        label.textColor = .white
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.alpha = 0
+        return label
+    }()
+    
     override func setupView() {
+        
         textField.leftViewMode = .always
         textField.leftView = searchIcon
+        textField.rightViewMode = .always
+        textField.rightView = eraseIcon
+        
         textField.addSubview(searchIcon)
+        textField.addSubview(eraseIcon)
+        
         container.addSubview(textField)
+        
         self.addSubview(container)
+        
         setupLayout()
     }
     
@@ -83,7 +101,11 @@ class SearchContactHeaderCell: BaseCollectionReusableView {
         // searchIcon
         searchIcon.heightAnchor.constraint(equalToConstant: 15).isActive = true
         searchIcon.widthAnchor.constraint(equalToConstant: 60).isActive = true
-        //searchIcon.leftAnchor.constraint(equalTo: textField.leftAnchor, constant: 20).isActive = true
+        
+        // eraseIcon
+        eraseIcon.heightAnchor.constraint(equalToConstant: 15).isActive = true
+        eraseIcon.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        
         
     }
 }
