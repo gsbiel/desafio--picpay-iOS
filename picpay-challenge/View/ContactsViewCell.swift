@@ -67,6 +67,28 @@ class ContactsViewCell: UICollectionViewCell {
     
     private func setupLayout() {
         
+        // contactImage constraints
+        contactImage.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        contactImage.widthAnchor.constraint(equalToConstant: 52).isActive = true
+        contactImage.heightAnchor.constraint(equalToConstant: 52).isActive = true
+        contactImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
+        
+        // contactInfoView constraints
+//        contactInfoView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        contactInfoView.leadingAnchor.constraint(equalTo: contactImage.trailingAnchor, constant: -16).isActive = true
+        contactInfoView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        contactInfoView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        
+        // contactID constraints
+        contactId.topAnchor.constraint(equalTo: contactInfoView.topAnchor, constant: 5).isActive = true
+        contactId.leftAnchor.constraint(equalTo: contactInfoView.leftAnchor).isActive = true
+        contactId.rightAnchor.constraint(equalTo: contactInfoView.rightAnchor).isActive = true
+        
+        // contactName constraints
+        contactName.topAnchor.constraint(equalTo: contactId.bottomAnchor, constant: 5).isActive = true
+        contactName.leftAnchor.constraint(equalTo: contactInfoView.leftAnchor).isActive = true
+        contactName.rightAnchor.constraint(equalTo: contactInfoView.rightAnchor).isActive = true
+    
     }
     
     override class var requiresConstraintBasedLayout: Bool {
