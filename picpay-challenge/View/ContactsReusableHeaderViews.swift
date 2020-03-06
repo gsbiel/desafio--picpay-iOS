@@ -105,7 +105,6 @@ class SearchContactHeaderCell: BaseCollectionReusableView {
         // eraseIcon
         eraseIcon.heightAnchor.constraint(equalToConstant: 15).isActive = true
         eraseIcon.widthAnchor.constraint(equalToConstant: 30).isActive = true
-        
-        
+
     }
 }

@@ -17,6 +17,9 @@ class ContactsViewController: UIViewController {
     
     private var isKeyboardActive: Bool = false
     
+    
+// MARK: - ViewController life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -42,6 +45,8 @@ class ContactsViewController: UIViewController {
         unregisterForKeyboardNotifications()
     }
     
+//MARK: - Keyboard notifications and actions
+    
     private func registerForKeyboardNotifications() {
         let center = NotificationCenter.default
         center.addObserver(self, selector: #selector(keyBoardWillBeShown(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -55,12 +60,10 @@ class ContactsViewController: UIViewController {
     }
     
     @objc private func keyBoardWillBeShown(_ notification: Notification) {
-        print("Keyboard opening...")
         isKeyboardActive = true
     }
     
     @objc private func keyBoardWillHide(_ notification: Notification) {
-        print("KeyBoard closing...")
         isKeyboardActive = false
     }
     
@@ -70,6 +73,8 @@ class ContactsViewController: UIViewController {
         }
     }
 }
+
+//MARK: - CollectionView datasource and delegate
 
 extension ContactsViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
@@ -128,6 +133,8 @@ extension ContactsViewController: UICollectionViewDelegateFlowLayout, UICollecti
     
 }
 
+//MARK: - Search text field delegate
+
 extension ContactsViewController: UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -143,8 +150,11 @@ extension ContactsViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        dismissKeyboard()
         return true
     }
+    
+//MARK: - Search text field utility functions
     
     private func highLightTextField(_ textField: UITextField) {
         textField.tintColor = UIColor.white
@@ -155,6 +165,7 @@ extension ContactsViewController: UITextFieldDelegate {
     private func removeTextFieldHighlight(_ textField: UITextField) {
         textField.tintColor = UIColor(red: 0.673, green: 0.695, blue: 0.742, alpha: 1)
         textField.layer.borderColor = UIColor(red: 0.673, green: 0.695, blue: 0.742, alpha: 1).cgColor
+        textField.layer.borderWidth = 0
     }
     
     private func setEraseIconVisibility(of textField: UITextField, to visibility: CGFloat){
