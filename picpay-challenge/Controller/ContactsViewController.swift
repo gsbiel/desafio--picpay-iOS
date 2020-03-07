@@ -39,17 +39,8 @@ class ContactsViewController: UIViewController {
         let gestureSensor = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(gestureSensor)
         
-        PicpayAPI.fetchContacts { (response) in
-            for contact in response {
-                let id = contact.1["id"].intValue
-                let name = contact.1["name"].stringValue
-                let img = contact.1["img"].stringValue
-                let username = contact.1["username"].stringValue
-                self.contacts.append(Contact(id: id, name: name, img: img, username: username))
-            }
-            
-            self.contactsCV.reloadData()
-        }
+        fetchContacts()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,6 +49,26 @@ class ContactsViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         unregisterForKeyboardNotifications()
+    }
+    
+    private func updateContactList() {
+        if self.contacts.count == 0 {
+           fetchContacts()
+        }
+        self.contactsCV.reloadData()
+    }
+    
+    private func fetchContacts() {
+        PicpayAPI.fetchContacts { (response) in
+            for contact in response {
+                let id = contact.1["id"].intValue
+                let name = contact.1["name"].stringValue
+                let img = contact.1["img"].stringValue
+                let username = contact.1["username"].stringValue
+                self.contacts.append(Contact(id: id, name: name, img: img, username: username))
+            }
+            self.updateContactList()
+        }
     }
     
 //MARK: - Keyboard notifications and actions
@@ -181,11 +192,25 @@ extension ContactsViewController: UITextFieldDelegate {
         removeTextFieldHighlight(textField)
         setEraseIconVisibility(of: textField, to: 0)
         dismissKeyboard()
+        
+        searchContacts(name: textField.text!)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         dismissKeyboard()
         return true
+    }
+    
+    private func searchContacts(name: String) {
+        let searchQuery = name.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: nil)
+        var searchResult = self.contacts.filter { (contact) -> Bool in
+            let name = contact.name.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: nil)
+            return name.contains(searchQuery)
+        }
+        
+        self.contacts = searchResult
+        updateContactList()
+        
     }
     
 //MARK: - Search text field utility functions
