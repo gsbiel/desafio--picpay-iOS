@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import SwiftyJSON
 
 class ContactsViewController: UIViewController {
 
@@ -18,6 +19,7 @@ class ContactsViewController: UIViewController {
     
     private var isKeyboardActive: Bool = false
     
+    private var contacts: [Contact] = [Contact]()
     
 // MARK: - ViewController life cycle
     
@@ -36,6 +38,18 @@ class ContactsViewController: UIViewController {
         
         let gestureSensor = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(gestureSensor)
+        
+        PicpayAPI.fetchContacts { (response) in
+            for contact in response {
+                let id = contact.1["id"].intValue
+                let name = contact.1["name"].stringValue
+                let img = contact.1["img"].stringValue
+                let username = contact.1["username"].stringValue
+                self.contacts.append(Contact(id: id, name: name, img: img, username: username))
+            }
+            
+            self.contactsCV.reloadData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,7 +102,7 @@ extension ContactsViewController: UICollectionViewDelegateFlowLayout, UICollecti
             return 0
         }
         else{
-            return 4
+            return self.contacts.count + 1
         }
     }
     
@@ -114,9 +128,10 @@ extension ContactsViewController: UICollectionViewDelegateFlowLayout, UICollecti
         }
         else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.contactsViewCellIdentifier, for: indexPath) as! ContactsViewCell
-            cell.contactId.text = "@eduardo.santos"
-            cell.contactName.text = "Eduardo Santos"
-            cell.contactImage.sd_setImage(with: URL(string: "https://randomuser.me/api/portraits/men/9.jpg"), completed: nil)
+            cell.contactId.text = self.contacts[indexPath.item-1].username
+            cell.contactName.text = self.contacts[indexPath.item-1].name
+            cell.contactImage.sd_setImage(with: URL(string: self.contacts[indexPath.item-1].img
+            ), completed: nil)
             return cell
         }
     }
