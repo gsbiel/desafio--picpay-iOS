@@ -12,7 +12,8 @@ struct K {
     static let contactsViewBasicReusableHeaderView = "basicReusableView"
     static let contactsViewContactHeaderIdentifier = "contactsCollectionViewHeaderClass"
     static let contactsViewSearchHeaderIdentifier = "contactsCollectionViewReusableSearchHeaderClass"
-    static let contactsViewCellIdentifier = "basicCell"
+    static let contactsViewCellIdentifier = "contactsViewCell"
+    static let contactsBaseViewCellIdentifier = "basicCell"
     
     static let searchIconName = "lupa"
     static let searchTxtFieldPlaceHolder = "A quem voce deseja pagar?"

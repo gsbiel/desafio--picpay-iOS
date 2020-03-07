@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ContactsViewController: UIViewController {
 
@@ -87,19 +88,37 @@ extension ContactsViewController: UICollectionViewDelegateFlowLayout, UICollecti
             return 0
         }
         else{
-            return 3
+            return 4
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return CGFloat(24)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-           return CGSize(width: collectionView.frame.width, height: CGFloat(300))
+        if indexPath.item == 0 {
+            return CGSize(width: collectionView.frame.width, height: CGFloat(40))
+        }
+        else {
+           return CGSize(width: collectionView.frame.width, height: CGFloat(52))
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let colors = [UIColor.blue, UIColor.green, UIColor.red]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.contactsViewCellIdentifier, for: indexPath)
-        cell.backgroundColor = colors[indexPath.item]
-        return cell
+        
+        if indexPath.item == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.contactsBaseViewCellIdentifier, for: indexPath)
+            cell.backgroundColor = .black
+            return cell
+        }
+        else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.contactsViewCellIdentifier, for: indexPath) as! ContactsViewCell
+            cell.contactId.text = "@eduardo.santos"
+            cell.contactName.text = "Eduardo Santos"
+            cell.contactImage.sd_setImage(with: URL(string: "https://randomuser.me/api/portraits/men/9.jpg"), completed: nil)
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

@@ -26,7 +26,8 @@ class ContactsView: UIView {
         cv.translatesAutoresizingMaskIntoConstraints = false
 //        cv.backgroundColor = .white
         cv.backgroundView = ContactsBackGroundView()
-        cv.register(UICollectionViewCell.self, forCellWithReuseIdentifier: K.contactsViewCellIdentifier)
+        cv.register(ContactsViewCell.self, forCellWithReuseIdentifier: K.contactsViewCellIdentifier)
+        cv.register(UICollectionViewCell.self, forCellWithReuseIdentifier: K.contactsBaseViewCellIdentifier)
         cv.register(SearchContactHeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: K.contactsViewSearchHeaderIdentifier)
         cv.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: K.contactsViewBasicReusableHeaderView)
         return cv

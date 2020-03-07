@@ -75,7 +75,7 @@ class ContactsViewCell: UICollectionViewCell {
         
         // contactInfoView constraints
 //        contactInfoView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        contactInfoView.leadingAnchor.constraint(equalTo: contactImage.trailingAnchor, constant: -16).isActive = true
+        contactInfoView.leadingAnchor.constraint(equalTo: contactImage.trailingAnchor, constant: 16).isActive = true
         contactInfoView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         contactInfoView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         
@@ -85,7 +85,7 @@ class ContactsViewCell: UICollectionViewCell {
         contactId.rightAnchor.constraint(equalTo: contactInfoView.rightAnchor).isActive = true
         
         // contactName constraints
-        contactName.topAnchor.constraint(equalTo: contactId.bottomAnchor, constant: 5).isActive = true
+        contactName.topAnchor.constraint(equalTo: contactId.bottomAnchor, constant: 3).isActive = true
         contactName.leftAnchor.constraint(equalTo: contactInfoView.leftAnchor).isActive = true
         contactName.rightAnchor.constraint(equalTo: contactInfoView.rightAnchor).isActive = true
     
