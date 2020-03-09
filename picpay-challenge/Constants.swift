@@ -30,6 +30,11 @@ struct K {
     static let creditCardInnerCardSymbolHeightRef = 17.29
     static let creditCardInnerCardTrailingAnchorRef = 8.96
     static let creditCardInnerCardTopAnchorRef = 9.01
+    static let creditCardNumberFieldStrokeWidthRef = 14.71
+    static let creditCardNumberFieldStrokeHeightRef = 5.85
+    static let creditCardNameFieldStrokeWidthRef = 26.47
+    static let creditCardNameFieldStrokeHeightRef = 5.85
+    static let dataFieldStrokeLeadingAnchorRef = 8.82
     
     // Dimensoes da tela usadadas no figma
     static let primingViewWidthRef = 320.0

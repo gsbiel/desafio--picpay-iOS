@@ -41,6 +41,12 @@ class CreditCardView: UIView {
         return layer
     }()
     
+    lazy var cardNumberField: UIStackView = {
+        let stack = UIStackView()
+        
+        return stack
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -72,9 +78,12 @@ class CreditCardView: UIView {
     }
 }
 
-//MARK: - Scaling factors for creditCardInnerSymbol
+//MARK: - Scaling factors for creditCardInnerSymbol, creditCardNumberFieldStroke and creditCardNameFieldStroke
 
 extension CreditCardView {
+    
+    // ---------------------------------------------------------------------------------------------
+    // creditCardInnerSymbol -----------------------------------------------------------------------
     
     private var innerSymbolWidthScaleFactor: CGFloat {
         return CGFloat(K.creditCardInnerCardSymbolWidthRef / K.creditCardWidthRef)
@@ -91,12 +100,42 @@ extension CreditCardView {
     private var innerSymbolTopAnchorScaleFactor: CGFloat {
         return CGFloat( K.creditCardInnerCardTopAnchorRef / K.creditCardHeightRef )
     }
+    
+    // ---------------------------------------------------------------------------------------------
+    // creditCardNumberFieldStroke -----------------------------------------------------------------
+    
+    private var numberFieldStrokeWidthScaleFactor: CGFloat {
+        return CGFloat( K.creditCardNumberFieldStrokeWidthRef / K.creditCardWidthRef)
+    }
+    
+    private var numberFieldStrokeHeightScaleFactor: CGFloat {
+        return CGFloat( K.creditCardNumberFieldStrokeHeightRef / K.creditCardHeightRef )
+    }
+    
+    // ---------------------------------------------------------------------------------------------
+    // creditCardNameFieldStroke -------------------------------------------------------------------
+    
+    private var nameFieldStrokeWidthScaleFactor: CGFloat {
+        return CGFloat( K.creditCardNameFieldStrokeWidthRef / K.creditCardWidthRef)
+    }
+    
+    private var nameFieldStrokeHeightScaleFactor: CGFloat {
+        return CGFloat( K.creditCardNameFieldStrokeHeightRef / K.creditCardHeightRef )
+    }
+    
+    // dataFieldLeadingAnchor -> name field and number field have the same value for this anchor
+    private var dataFieldStrokeLeadingAnchorScaleFactor: CGFloat {
+        return CGFloat( K.dataFieldStrokeLeadingAnchorRef / K.creditCardWidthRef)
+    }
 
 }
 
-//MARK: - Dimensions and constraint parameters for creditCardInnerSymbol
+//MARK: - Dimensions and constraint parameters for creditCardInnerSymbol, creditCardNumberFieldStroke and creditCardNameFieldStroke
 
 extension CreditCardView {
+    
+    // ---------------------------------------------------------------------------------------------
+    // creditCardInnerSymbol -----------------------------------------------------------------------
     
     private var innerSymbolWidth: CGFloat {
         return self.innerSymbolWidthScaleFactor * self.frame.width
@@ -114,4 +153,33 @@ extension CreditCardView {
         return innerSymbolTopAnchorScaleFactor * self.frame.height
     }
     
+    // ---------------------------------------------------------------------------------------------
+    // creditCardNumberFieldStroke -----------------------------------------------------------------
+    
+    private var numberFieldStrokeWidth: CGFloat {
+        return numberFieldStrokeWidthScaleFactor * self.frame.width
+    }
+    
+    private var numberFieldStrokeHeight: CGFloat {
+        return numberFieldStrokeHeightScaleFactor * self.frame.height
+    }
+    
+    // ---------------------------------------------------------------------------------------------
+    // creditCardNameFieldStroke -------------------------------------------------------------------
+    
+    private var nameFieldStrokeWidth: CGFloat {
+        return nameFieldStrokeWidthScaleFactor * self.frame.width
+    }
+    
+    private var nameFieldStrokeHeight: CGFloat {
+        return nameFieldStrokeHeightScaleFactor * self.frame.height
+    }
+    
+    // dataFieldStrokeLeadingAnchor
+    private var dataFieldStrokeLeadingAnchorConstant: CGFloat {
+        return dataFieldStrokeLeadingAnchorScaleFactor * self.frame.width
+    }
+    
 }
+
+
