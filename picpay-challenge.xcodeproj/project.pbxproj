@@ -25,6 +25,7 @@
 		89D6F1DA240C6C5F004FEBD9 /* ContactsBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D6F1D9240C6C5F004FEBD9 /* ContactsBackgroundView.swift */; };
 		C71642FB050E69DE125665EA /* Pods_picpay_challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62F28EE168B78C6DB70B579C /* Pods_picpay_challenge.framework */; };
 		EBFDF554241665560070F0B3 /* PrimingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFDF553241665560070F0B3 /* PrimingViewController.swift */; };
+		EBFDF55624166CDD0070F0B3 /* PrimingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFDF55524166CDD0070F0B3 /* PrimingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		B7358281CF1BA4D0E0E34FBF /* Pods-picpay-challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-picpay-challenge.debug.xcconfig"; path = "Target Support Files/Pods-picpay-challenge/Pods-picpay-challenge.debug.xcconfig"; sourceTree = "<group>"; };
 		C66092342CF920922D0CBCA0 /* Pods-picpay-challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-picpay-challenge.release.xcconfig"; path = "Target Support Files/Pods-picpay-challenge/Pods-picpay-challenge.release.xcconfig"; sourceTree = "<group>"; };
 		EBFDF553241665560070F0B3 /* PrimingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimingViewController.swift; sourceTree = "<group>"; };
+		EBFDF55524166CDD0070F0B3 /* PrimingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				893351A82409CA00002881C3 /* ContactsViewCell.swift */,
 				898B30A3240A852F00B0972A /* ContactsReusableHeaderViews.swift */,
 				89D6F1D9240C6C5F004FEBD9 /* ContactsBackgroundView.swift */,
+				EBFDF55524166CDD0070F0B3 /* PrimingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				8933519E2409B7C1002881C3 /* ContactsView.swift in Sources */,
 				8933519C2409B738002881C3 /* Constants.swift in Sources */,
 				893351A22409B857002881C3 /* ContactsManager.swift in Sources */,
+				EBFDF55624166CDD0070F0B3 /* PrimingView.swift in Sources */,
 				89C4D86F24132AB400E80DFD /* PicpayAPI.swift in Sources */,
 				893351A52409B883002881C3 /* Card.swift in Sources */,
 			);
