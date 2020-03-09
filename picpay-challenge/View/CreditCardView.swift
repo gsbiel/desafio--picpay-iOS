@@ -10,22 +10,6 @@ import UIKit
 
 class CreditCardView: UIView {
     
-    // Fatores de Escalonamento: Os valores abaixo foram tirados do design feito no figma
-    private var innerSymbolWidthScaleFactor: CGFloat {
-        return CGFloat(K.creditCardInnerCardSymbolWidthRef / K.creditCardWidthRef)
-    }
-    private var innerSymbolHeightScaleFactor: CGFloat {
-        return CGFloat(K.creditCardInnerCardSymbolHeightRef / K.creditCardHeightRef)
-    }
-    
-    // Definindo as dimensoes do simbolo que fica dentro do CreditCardView, respeitando a proporcionalidade entre o layout do figma e o layout da tela onde o app esta rodando
-    private var innerSymbolWidth: CGFloat {
-        return self.innerSymbolWidthScaleFactor * self.frame.width
-    }
-    private var innerSymbolHeight: CGFloat {
-        return self.innerSymbolHeightScaleFactor * self.frame.height
-    }
-    
     lazy var innerCardSymbol: UIView = {
         let view = UIView()
         view.frame = CGRect(x: 0, y: 0, width: self.innerSymbolWidth, height: self.innerSymbolHeight)
@@ -70,20 +54,64 @@ class CreditCardView: UIView {
     private func setupView() {
         self.layer.addSublayer(gradientLayer)
         self.addSubview(innerCardSymbol)
-        
         setupLayout()
     }
     
     private func setupLayout() {
         
-        let constant = self.frame.width - innerCardSymbol.frame.width - 8.96
         // innerCardSymbol constraints
+        // Como CreditCardView nao possui leadingAnchor/trailingAnchor definidos, essas ancoras estao apontando para o seu ponto (0,0) que fica na borda superiora esquerda do desenho formado pelo componente. Entao tive que fazer o calculo abaixo para posicionar o item innerCardSymbol corretamente dentro do CreditCardView
+        let constant = self.frame.width - innerCardSymbol.frame.width - innerSymbolLeadingAnchorConstant
         innerCardSymbol.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: constant).isActive = true
-        innerCardSymbol.topAnchor.constraint(equalTo: self.topAnchor, constant: 9.01).isActive = true
+        innerCardSymbol.topAnchor.constraint(equalTo: self.topAnchor, constant: innerSymbolTopAnchorConstant).isActive = true
         
     }
     
     override class var requiresConstraintBasedLayout: Bool {
         return true
     }
+}
+
+//MARK: - Scaling factors for creditCardInnerSymbol
+
+extension CreditCardView {
+    
+    private var innerSymbolWidthScaleFactor: CGFloat {
+        return CGFloat(K.creditCardInnerCardSymbolWidthRef / K.creditCardWidthRef)
+    }
+    
+    private var innerSymbolHeightScaleFactor: CGFloat {
+        return CGFloat(K.creditCardInnerCardSymbolHeightRef / K.creditCardHeightRef)
+    }
+    
+    private var innerSymbolLeadingAnchorScaleFactor: CGFloat {
+        return CGFloat( K.creditCardInnerCardTrailingAnchorRef / K.creditCardWidthRef)
+    }
+    
+    private var innerSymbolTopAnchorScaleFactor: CGFloat {
+        return CGFloat( K.creditCardInnerCardTopAnchorRef / K.creditCardHeightRef )
+    }
+
+}
+
+//MARK: - Dimensions and constraint parameters for creditCardInnerSymbol
+
+extension CreditCardView {
+    
+    private var innerSymbolWidth: CGFloat {
+        return self.innerSymbolWidthScaleFactor * self.frame.width
+    }
+    
+    private var innerSymbolHeight: CGFloat {
+        return self.innerSymbolHeightScaleFactor * self.frame.height
+    }
+    
+    private var innerSymbolLeadingAnchorConstant: CGFloat {
+        return innerSymbolLeadingAnchorScaleFactor * self.frame.width
+    }
+    
+    private var innerSymbolTopAnchorConstant: CGFloat {
+        return innerSymbolTopAnchorScaleFactor * self.frame.height
+    }
+    
 }
