@@ -10,9 +10,9 @@ import UIKit
 
 class PrimingView: UIView {
     
-    // Fatores de Escalonamento: Os valores abaixo foram retirados do design feito no figma
-    private let cardWidthScaleFactor: CGFloat = 100 / 320
-    private let cardHeightScaleFactor: CGFloat = 70.24 / 568
+    // Fatores de Escalonamento: As propriedades abaixo sao calculadas em funcao do design feito no figma
+    private let cardWidthScaleFactor: CGFloat = CGFloat(K.creditCardWidthRef / K.primingViewWidthRef)
+    private let cardHeightScaleFactor: CGFloat = CGFloat(K.creditCardHeightRef / K.primingViewHeightRef)
     
     private var cardWidth: CGFloat {
         return self.cardWidthScaleFactor * UIScreen.main.bounds.width

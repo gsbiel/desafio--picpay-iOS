@@ -17,4 +17,20 @@ struct K {
     
     static let searchIconName = "lupa"
     static let searchTxtFieldPlaceHolder = "A quem voce deseja pagar?"
+    
+    // O cartao de credigo da tela de Priming foi feito usando gradientes.
+    // De acordo com o que aprendi ate agora, objetos do tipo CAGradientLayer, que devem ser inseridos em UIViews como sublayers, nao podem ser dimensionados usando autolayout.
+    // Entao, na hora de instanciar objetos CAGradientLayer, eu tenho que passar o seu frame, com width e height ja definidos.
+    // Assim, para criar o desenho do cartao e ja configura-lo para reajustar suas dimensoes, de modo a manter a proporcao para qualquer tamanho de tela, tive que tirar do design do figma as dimensoes definidas pelo designer e criar fatores de escalonamento para calcular as dimensoes dos componentes criados no app.
+    
+    // Dimensoes do cartao desenhado no figma
+    static let creditCardWidthRef = 100.0
+    static let creditCardHeightRef = 70.24
+    static let creditCardInnerCardSymbolWidthRef = 23.29
+    static let creditCardInnerCardSymbolHeightRef = 17.29
+    
+    // Dimensoes da tela usadadas no figma
+    static let primingViewWidthRef = 320.0
+    static let primingViewHeightRef = 568.0
+    
 }
