@@ -24,6 +24,7 @@
 		89C4D86F24132AB400E80DFD /* PicpayAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C4D86E24132AB400E80DFD /* PicpayAPI.swift */; };
 		89D6F1DA240C6C5F004FEBD9 /* ContactsBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D6F1D9240C6C5F004FEBD9 /* ContactsBackgroundView.swift */; };
 		C71642FB050E69DE125665EA /* Pods_picpay_challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62F28EE168B78C6DB70B579C /* Pods_picpay_challenge.framework */; };
+		EBFDF554241665560070F0B3 /* PrimingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFDF553241665560070F0B3 /* PrimingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		89D6F1D9240C6C5F004FEBD9 /* ContactsBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsBackgroundView.swift; sourceTree = "<group>"; };
 		B7358281CF1BA4D0E0E34FBF /* Pods-picpay-challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-picpay-challenge.debug.xcconfig"; path = "Target Support Files/Pods-picpay-challenge/Pods-picpay-challenge.debug.xcconfig"; sourceTree = "<group>"; };
 		C66092342CF920922D0CBCA0 /* Pods-picpay-challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-picpay-challenge.release.xcconfig"; path = "Target Support Files/Pods-picpay-challenge/Pods-picpay-challenge.release.xcconfig"; sourceTree = "<group>"; };
+		EBFDF553241665560070F0B3 /* PrimingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				8913630A2409AE37000287A5 /* ContactsViewController.swift */,
+				EBFDF553241665560070F0B3 /* PrimingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBFDF554241665560070F0B3 /* PrimingViewController.swift in Sources */,
 				893351A92409CA00002881C3 /* ContactsViewCell.swift in Sources */,
 				893351A02409B839002881C3 /* Contact.swift in Sources */,
 				8913630B2409AE37000287A5 /* ContactsViewController.swift in Sources */,
