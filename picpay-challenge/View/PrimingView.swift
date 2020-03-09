@@ -21,16 +21,11 @@ class PrimingView: UIView {
         return self.cardHeightScaleFactor * UIScreen.main.bounds.height
     }
     
-    lazy var gradientLayer: CAGradientLayer = {
-        let layer = CAGradientLayer()
-        layer.frame = CGRect(x: 64, y: 64, width: self.cardWidth, height: self.cardHeight)
-        layer.colors = [UIColor(red: 0.227, green: 0.795, blue: 1, alpha: 1).cgColor, UIColor(red: 0.016, green: 0.544, blue: 0.734, alpha: 1).cgColor]
-        layer.locations = [0,1]
-        layer.startPoint = CGPoint(x: 0.25, y: 0.5)
-        layer.endPoint = CGPoint(x: 0.75, y: 0.5)
-        layer.cornerRadius = 10
-        layer.position = self.center
-        return layer
+    lazy var creditCard: CreditCardView = {
+        // Tive que ja passar o frame da CreditCardView, pois a CAGradientLayer presente nesse componente precisa das dimensoes no momento que for inicializada, uma vez que nao e possivel configurar sublayers com autolayout.
+        let card = CreditCardView(frame: CGRect(x: 0, y: 0, width: self.cardWidth, height: self.cardHeight))
+        card.translatesAutoresizingMaskIntoConstraints = false
+        return card
     }()
     
     override init(frame: CGRect) {
@@ -44,8 +39,20 @@ class PrimingView: UIView {
     }
     
     private func setupView() {
-        self.layer.addSublayer(gradientLayer)
+//        self.layer.addSublayer(gradientLayer)
+        self.addSubview(creditCard)
+        setupLayout()
     }
     
+    private func setupLayout() {
+        
+        // creditCard constraints
+        creditCard.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: -1 * cardWidth / 2.0).isActive = true
+        creditCard.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant:  -1 * cardHeight / 2.0).isActive = true
+    }
+    
+    override class var requiresConstraintBasedLayout: Bool {
+        return true
+    }
     
 }
