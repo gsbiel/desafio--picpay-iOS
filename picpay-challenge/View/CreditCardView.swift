@@ -69,25 +69,6 @@ class CreditCardView: UIView {
     private func setupView() {
         self.layer.addSublayer(gradientLayer)
         self.addSubview(innerCardSymbol)
-        
-        // Adding strokes to cardNumberField stackView
-//        let stroke1 = UILabel(frame: CGRect(x: 0, y: 0, width: numberFieldStrokeWidth, height: numberFieldStrokeHeight))
-//        stroke1.backgroundColor = .white
-//        let stroke2 = UILabel(frame: CGRect(x: 0, y: 0, width: numberFieldStrokeWidth, height: numberFieldStrokeHeight))
-//        stroke2.backgroundColor = .white
-//        let stroke3 = UILabel(frame: CGRect(x: 0, y: 0, width: numberFieldStrokeWidth, height: numberFieldStrokeHeight))
-//        stroke3.backgroundColor = .white
-//        let stroke4 = UILabel(frame: CGRect(x: 0, y: 0, width: numberFieldStrokeWidth, height: numberFieldStrokeHeight))
-//        stroke4.backgroundColor = .white
-        
-//        let stroke2 = stroke1.copy() as! CreditCardNumberStroke
-//        let stroke3 = stroke1.copy() as! CreditCardNumberStroke
-//        let stroke4 = stroke1.copy() as! CreditCardNumberStroke
-//        cardNumberField.addArrangedSubview(stroke1)
-//        cardNumberField.addArrangedSubview(stroke2)
-//        cardNumberField.addArrangedSubview(stroke3)
-//        cardNumberField.addArrangedSubview(stroke4)
-        
         self.addSubview(cardNumberField)
         self.addSubview(cardNameField)
     }
@@ -212,26 +193,5 @@ extension CreditCardView {
     }
     
 }
-
-//class CreditCardNumberStroke: UILabel, NSCopying {
-//
-//    required override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        setupLabel()
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        super.init(coder: coder)
-//        setupLabel()
-//    }
-//
-//    private func setupLabel() {
-//        self.backgroundColor = UIColor.white
-//    }
-//
-//    func copy(with zone: NSZone? = nil) -> Any {
-//        return type(of: self).init(frame: self.frame)
-//    }
-//}
 
 
