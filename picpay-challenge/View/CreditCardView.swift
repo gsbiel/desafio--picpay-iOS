@@ -45,7 +45,15 @@ class CreditCardView: UIView {
     lazy var cardNumberField: UIView = {
         let stack = UIView(frame: CGRect(x: 10, y: self.numberFieldStrokeTopAnchorConstant, width: self.frame.width - 20, height: self.numberFieldStrokeHeight))
         stack.backgroundColor = .white
+        stack.layer.cornerRadius = 5
         return stack
+    }()
+    
+    lazy var cardNameField: UIView = {
+        let view = UIView(frame: CGRect(x: self.dataFieldStrokeLeadingAnchorConstant, y: self.nameFieldStrokeTopAnchorConstant, width: self.nameFieldStrokeWidth, height: self.nameFieldStrokeHeight))
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 5
+        return view
     }()
     
     override init(frame: CGRect) {
@@ -81,6 +89,7 @@ class CreditCardView: UIView {
 //        cardNumberField.addArrangedSubview(stroke4)
         
         self.addSubview(cardNumberField)
+        self.addSubview(cardNameField)
     }
 }
 
@@ -131,6 +140,10 @@ extension CreditCardView {
     
     private var nameFieldStrokeHeightScaleFactor: CGFloat {
         return CGFloat( K.creditCardNameFieldStrokeHeightRef / K.creditCardHeightRef )
+    }
+    
+    private var nameFieldStrokeTopAnchorScaleFactor: CGFloat {
+        return CGFloat( K.creditCardNameFieldStrokeTopAnchorRef / K.creditCardHeightRef)
     }
     
     // dataFieldLeadingAnchor -> name field and number field have the same value for this anchor
@@ -187,6 +200,10 @@ extension CreditCardView {
     
     private var nameFieldStrokeHeight: CGFloat {
         return nameFieldStrokeHeightScaleFactor * self.frame.height
+    }
+    
+    private var nameFieldStrokeTopAnchorConstant: CGFloat {
+        return nameFieldStrokeTopAnchorScaleFactor * self.frame.height
     }
     
     // dataFieldStrokeLeadingAnchor -> name field and number field have the same value for this anchor
