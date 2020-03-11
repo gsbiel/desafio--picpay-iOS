@@ -12,8 +12,9 @@ class CreditCardView: UIView {
     
     lazy var innerCardSymbol: UIView = {
         let view = UIView()
-        view.frame = CGRect(x: 0, y: 0, width: self.innerSymbolWidth, height: self.innerSymbolHeight)
-        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        let positionX = self.frame.width - innerSymbolWidth - innerSymbolLeadingAnchorConstant
+        view.frame = CGRect(x: positionX, y: self.innerSymbolTopAnchorConstant, width: self.innerSymbolWidth, height: self.innerSymbolHeight)
         view.layer.cornerRadius = 4
         
         // Criando o gradiente para a view
@@ -41,9 +42,9 @@ class CreditCardView: UIView {
         return layer
     }()
     
-    lazy var cardNumberField: UIStackView = {
-        let stack = UIStackView()
-        
+    lazy var cardNumberField: UIView = {
+        let stack = UIView(frame: CGRect(x: 10, y: self.numberFieldStrokeTopAnchorConstant, width: self.frame.width - 20, height: self.numberFieldStrokeHeight))
+        stack.backgroundColor = .white
         return stack
     }()
     
@@ -60,21 +61,26 @@ class CreditCardView: UIView {
     private func setupView() {
         self.layer.addSublayer(gradientLayer)
         self.addSubview(innerCardSymbol)
-        setupLayout()
-    }
-    
-    private func setupLayout() {
         
-        // innerCardSymbol constraints
-        // Como CreditCardView nao possui leadingAnchor/trailingAnchor definidos, essas ancoras estao apontando para o seu ponto (0,0) que fica na borda superiora esquerda do desenho formado pelo componente. Entao tive que fazer o calculo abaixo para posicionar o item innerCardSymbol corretamente dentro do CreditCardView
-        let constant = self.frame.width - innerCardSymbol.frame.width - innerSymbolLeadingAnchorConstant
-        innerCardSymbol.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: constant).isActive = true
-        innerCardSymbol.topAnchor.constraint(equalTo: self.topAnchor, constant: innerSymbolTopAnchorConstant).isActive = true
+        // Adding strokes to cardNumberField stackView
+//        let stroke1 = UILabel(frame: CGRect(x: 0, y: 0, width: numberFieldStrokeWidth, height: numberFieldStrokeHeight))
+//        stroke1.backgroundColor = .white
+//        let stroke2 = UILabel(frame: CGRect(x: 0, y: 0, width: numberFieldStrokeWidth, height: numberFieldStrokeHeight))
+//        stroke2.backgroundColor = .white
+//        let stroke3 = UILabel(frame: CGRect(x: 0, y: 0, width: numberFieldStrokeWidth, height: numberFieldStrokeHeight))
+//        stroke3.backgroundColor = .white
+//        let stroke4 = UILabel(frame: CGRect(x: 0, y: 0, width: numberFieldStrokeWidth, height: numberFieldStrokeHeight))
+//        stroke4.backgroundColor = .white
         
-    }
-    
-    override class var requiresConstraintBasedLayout: Bool {
-        return true
+//        let stroke2 = stroke1.copy() as! CreditCardNumberStroke
+//        let stroke3 = stroke1.copy() as! CreditCardNumberStroke
+//        let stroke4 = stroke1.copy() as! CreditCardNumberStroke
+//        cardNumberField.addArrangedSubview(stroke1)
+//        cardNumberField.addArrangedSubview(stroke2)
+//        cardNumberField.addArrangedSubview(stroke3)
+//        cardNumberField.addArrangedSubview(stroke4)
+        
+        self.addSubview(cardNumberField)
     }
 }
 
@@ -110,6 +116,10 @@ extension CreditCardView {
     
     private var numberFieldStrokeHeightScaleFactor: CGFloat {
         return CGFloat( K.creditCardNumberFieldStrokeHeightRef / K.creditCardHeightRef )
+    }
+    
+    private var numberFieldStrokeTopAnchorScaleFactor: CGFloat {
+        return CGFloat(K.creditCardNumberFieldStrokeTopAnchorRef / K.creditCardHeightRef )
     }
     
     // ---------------------------------------------------------------------------------------------
@@ -164,6 +174,10 @@ extension CreditCardView {
         return numberFieldStrokeHeightScaleFactor * self.frame.height
     }
     
+    private var numberFieldStrokeTopAnchorConstant: CGFloat {
+        return numberFieldStrokeTopAnchorScaleFactor * self.frame.height
+    }
+    
     // ---------------------------------------------------------------------------------------------
     // creditCardNameFieldStroke -------------------------------------------------------------------
     
@@ -175,11 +189,32 @@ extension CreditCardView {
         return nameFieldStrokeHeightScaleFactor * self.frame.height
     }
     
-    // dataFieldStrokeLeadingAnchor
+    // dataFieldStrokeLeadingAnchor -> name field and number field have the same value for this anchor
     private var dataFieldStrokeLeadingAnchorConstant: CGFloat {
         return dataFieldStrokeLeadingAnchorScaleFactor * self.frame.width
     }
     
 }
+
+//class CreditCardNumberStroke: UILabel, NSCopying {
+//
+//    required override init(frame: CGRect) {
+//        super.init(frame: frame)
+//        setupLabel()
+//    }
+//
+//    required init?(coder: NSCoder) {
+//        super.init(coder: coder)
+//        setupLabel()
+//    }
+//
+//    private func setupLabel() {
+//        self.backgroundColor = UIColor.white
+//    }
+//
+//    func copy(with zone: NSZone? = nil) -> Any {
+//        return type(of: self).init(frame: self.frame)
+//    }
+//}
 
 
