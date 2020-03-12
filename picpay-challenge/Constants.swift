@@ -12,6 +12,9 @@ struct K {
     
     static let backGroundTheme = UIColor(red: 0.114, green: 0.118, blue: 0.125, alpha: 1)
     
+    static let primingViewMainLabelText = "Cadastre um cartao de credito"
+    
+    
     static let contactsViewBasicReusableHeaderView = "basicReusableView"
     static let contactsViewContactHeaderIdentifier = "contactsCollectionViewHeaderClass"
     static let contactsViewSearchHeaderIdentifier = "contactsCollectionViewReusableSearchHeaderClass"
@@ -47,4 +50,13 @@ struct K {
     static let primingViewWidthRef = 320.0
     static let primingViewHeightRef = 568.0
     
+    static let primingViewMainLabelWidthRef = 280.0
+    static let primingViewMainLabelHeightRef = 64.0
+    static let primingViewMainLabelTopAnchorConstantRef = 260.0
+    static let primingViewMainLabelLeadingAnchorConstantRef = 20.0
+    
+    static let primingViewSecondaryLabelWidthRef = 248.0
+    static let primingViewSecondaryLabelHeightRef = 60.0
+    static let primingViewSecondaryLabelTopAnchorConstantRef = 340.0
+    static let primingViewSecondaryLabelLeadingAnchorConstantRef = 36.0
 }

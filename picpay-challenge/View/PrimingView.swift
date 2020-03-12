@@ -11,10 +11,29 @@ import UIKit
 class PrimingView: UIView {
     
     lazy var creditCard: CreditCardView = {
-        // Tive que ja passar o frame da CreditCardView, pois a CAGradientLayer presente nesse componente precisa das dimensoes no momento que for inicializada, uma vez que nao e possivel configurar sublayers com autolayout.
         let card = CreditCardView(frame: CGRect(x: self.cardLeadingAnchorConstant, y: self.cardTopAnchorConstant, width: self.cardWidth, height: self.cardHeight))
-        //card.translatesAutoresizingMaskIntoConstraints = false
         return card
+    }()
+    
+    lazy var mainLabel: UILabel = {
+        let label = UILabel(frame: CGRect(x: self.mainLabelLeadingAnchorConstant, y: self.mainLabelTopAnchorConstant, width: self.mainLabelWidth, height: self.mainLabelHeight))
+        label.font = UIFont.boldSystemFont(ofSize: 28.0)
+        label.numberOfLines = 0
+        label.textColor = .white
+        //label.lineBreakMode = .byWordWrapping
+        label.textAlignment = .center
+        
+        var paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineHeightMultiple = 0.96
+        label.attributedText = NSMutableAttributedString(string: K.primingViewMainLabelText, attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        
+        return label
+    }()
+    
+    lazy var secondaryLabel: UILabel = {
+        let label = UILabel()
+        
+        return label
     }()
     
     override init(frame: CGRect) {
@@ -29,23 +48,19 @@ class PrimingView: UIView {
     
     private func setupView() {
         self.backgroundColor = K.backGroundTheme
-//        self.layer.addSublayer(gradientLayer)
         self.addSubview(creditCard)
-        //setupLayout()
+        self.addSubview(mainLabel)
+
     }
-    
-//    private func setupLayout() {
-//
-//        // creditCard constraints
-//        creditCard.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: -1 * cardWidth / 2.0).isActive = true
-//        creditCard.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant:  -1 * cardHeight / 2.0).isActive = true
-//    }
     
 }
 
 //MARK: - Scaling factors for PrimingView
 
 extension PrimingView {
+    
+    // -----------------------------------------------------------------------------------------------
+    // creditCard ------------------------------------------------------------------------------------
     
     private var cardWidthScaleFactor: CGFloat {
         return CGFloat(K.creditCardWidthRef / K.primingViewWidthRef)
@@ -63,11 +78,51 @@ extension PrimingView {
         return CGFloat( K.creditCardLeadingAnchorConstantRef / K.primingViewWidthRef )
     }
     
+    // -----------------------------------------------------------------------------------------------
+    // mainLabel -------------------------------------------------------------------------------------
+    
+    private var mainLabelWidthScaleFactor: CGFloat {
+        return CGFloat( K.primingViewMainLabelWidthRef / K.primingViewWidthRef)
+    }
+    
+    private var mainLabelHeightScaleFactor: CGFloat {
+        return CGFloat( K.primingViewMainLabelHeightRef / K.primingViewHeightRef)
+    }
+    
+    private var mainLabelTopAnchorConstantScaleFactor: CGFloat {
+        return CGFloat( K.primingViewMainLabelTopAnchorConstantRef / K.primingViewHeightRef)
+    }
+    
+    private var mainLabelLeadingAnchorConstantScaleFactor: CGFloat {
+        return CGFloat( K.primingViewMainLabelLeadingAnchorConstantRef / K.primingViewWidthRef)
+    }
+    
+    // -----------------------------------------------------------------------------------------------
+    // secondaryLabel --------------------------------------------------------------------------------
+    
+    private var secondaryLabelWidthScaleFactor: CGFloat {
+        return CGFloat( K.primingViewSecondaryLabelWidthRef / K.primingViewWidthRef)
+    }
+    
+    private var secondaryLabelHeightScaleFactor: CGFloat {
+        return CGFloat( K.primingViewSecondaryLabelHeightRef / K.primingViewHeightRef)
+    }
+    
+    private var secondaryLabelTopAnchorConstantScaleFactor: CGFloat {
+        return CGFloat( K.primingViewSecondaryLabelTopAnchorConstantRef / K.primingViewHeightRef)
+    }
+    
+    private var secondaryLabelLeadingAnchorConstantScaleFactor: CGFloat {
+        return CGFloat( K.primingViewSecondaryLabelLeadingAnchorConstantRef / K.primingViewWidthRef)
+    }
 }
 
 //MARK: - Dimensions and constraint parameters for PrimingView
 
 extension PrimingView {
+
+    // -----------------------------------------------------------------------------------------------
+    // creditCard ------------------------------------------------------------------------------------
     
     private var cardWidth: CGFloat {
         return self.cardWidthScaleFactor * UIScreen.main.bounds.width
@@ -83,6 +138,44 @@ extension PrimingView {
     
     private var cardLeadingAnchorConstant: CGFloat {
         return self.cardLeadingAnchorConstantScaleFactor * self.frame.width
+    }
+
+    // -----------------------------------------------------------------------------------------------
+    // mainLabel -------------------------------------------------------------------------------------
+    
+    private var mainLabelWidth: CGFloat {
+        return self.mainLabelWidthScaleFactor * self.frame.width
+    }
+    
+    private var mainLabelHeight: CGFloat {
+        return self.mainLabelHeightScaleFactor * self.frame.height
+    }
+    
+    private var mainLabelTopAnchorConstant: CGFloat {
+        return self.mainLabelTopAnchorConstantScaleFactor * self.frame.height
+    }
+    
+    private var mainLabelLeadingAnchorConstant: CGFloat {
+        return self.mainLabelLeadingAnchorConstantScaleFactor * self.frame.width
+    }
+    
+    // -----------------------------------------------------------------------------------------------
+    // secondaryLabel --------------------------------------------------------------------------------
+    
+    private var secondaryLabelWidth: CGFloat {
+        return self.secondaryLabelWidthScaleFactor * self.frame.width
+    }
+    
+    private var secondaryLabelHeight: CGFloat {
+        return self.secondaryLabelHeightScaleFactor * self.frame.height
+    }
+    
+    private var secondaryLabelTopAnchorConstant: CGFloat {
+        return self.secondaryLabelTopAnchorConstantScaleFactor * self.frame.height
+    }
+    
+    private var secondaryLabelLeadingAnchorConstant: CGFloat {
+        return self.secondaryLabelLeadingAnchorConstantScaleFactor * self.frame.width
     }
     
 }
