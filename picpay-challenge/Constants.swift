@@ -6,9 +6,12 @@
 //  Copyright © 2020 GabrielGaspar. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct K {
+    
+    static let backGroundTheme = UIColor(red: 0.114, green: 0.118, blue: 0.125, alpha: 1)
+    
     static let contactsViewBasicReusableHeaderView = "basicReusableView"
     static let contactsViewContactHeaderIdentifier = "contactsCollectionViewHeaderClass"
     static let contactsViewSearchHeaderIdentifier = "contactsCollectionViewReusableSearchHeaderClass"
@@ -37,6 +40,8 @@ struct K {
     static let dataFieldStrokeLeadingAnchorRef = 8.82
     static let creditCardNumberFieldStrokeTopAnchorRef = 45.62
     static let creditCardNameFieldStrokeTopAnchorRef = 54.4
+    static let creditCardTopAnchorConstantRef = 158.21
+    static let creditCardLeadingAnchorConstantRef = 110.0
     
     // Dimensoes da tela usadadas no figma
     static let primingViewWidthRef = 320.0

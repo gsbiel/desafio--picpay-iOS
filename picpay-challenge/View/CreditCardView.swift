@@ -38,12 +38,11 @@ class CreditCardView: UIView {
         layer.startPoint = CGPoint(x: 0.25, y: 0.5)
         layer.endPoint = CGPoint(x: 0.75, y: 0.5)
         layer.cornerRadius = 10
-        layer.position = self.center
         return layer
     }()
     
     lazy var cardNumberField: UIView = {
-        let stack = UIView(frame: CGRect(x: 10, y: self.numberFieldStrokeTopAnchorConstant, width: self.frame.width - 20, height: self.numberFieldStrokeHeight))
+        let stack = UIView(frame: CGRect(x: self.dataFieldStrokeLeadingAnchorConstant, y: self.numberFieldStrokeTopAnchorConstant, width: self.frame.width - 20, height: self.numberFieldStrokeHeight))
         stack.backgroundColor = .white
         stack.layer.cornerRadius = 5
         return stack
@@ -77,6 +76,17 @@ class CreditCardView: UIView {
 //MARK: - Scaling factors for creditCardInnerSymbol, creditCardNumberFieldStroke and creditCardNameFieldStroke
 
 extension CreditCardView {
+    
+    // -----------------------------------------------------------------------------------------------
+    // creditCardGradientLayer -----------------------------------------------------------------------
+    
+    private var gradientLayerTopAnchorConstantScaleFactor: CGFloat {
+        return CGFloat(K.creditCardTopAnchorConstantRef / K.creditCardHeightRef)
+    }
+    
+    private var gradientLayerLeadingAnchorConstantScaleFactor: CGFloat {
+        return CGFloat(K.creditCardLeadingAnchorConstantRef / K.creditCardWidthRef)
+    }
     
     // ---------------------------------------------------------------------------------------------
     // creditCardInnerSymbol -----------------------------------------------------------------------
@@ -137,6 +147,17 @@ extension CreditCardView {
 //MARK: - Dimensions and constraint parameters for creditCardInnerSymbol, creditCardNumberFieldStroke and creditCardNameFieldStroke
 
 extension CreditCardView {
+    
+    // -----------------------------------------------------------------------------------------------
+    // creditCardGradientLayer -----------------------------------------------------------------------
+    
+    private var gradientLayerTopAnchorConstant: CGFloat {
+        return gradientLayerTopAnchorConstantScaleFactor * (self.superview?.superview?.frame.height ?? CGFloat(0))
+    }
+    
+    private var gradientLayerLeadingAnchorConstant: CGFloat {
+        return gradientLayerLeadingAnchorConstantScaleFactor * (self.superview?.superview?.frame.width ?? CGFloat(0))
+    }
     
     // ---------------------------------------------------------------------------------------------
     // creditCardInnerSymbol -----------------------------------------------------------------------
