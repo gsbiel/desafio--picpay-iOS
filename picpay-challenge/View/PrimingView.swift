@@ -65,7 +65,7 @@ class PrimingView: UIView {
     
 }
 
-//MARK: - Scaling factors for PrimingView
+//MARK: - Scaling factors for PrimingView UI Elements
 
 extension PrimingView {
     
@@ -147,7 +147,7 @@ extension PrimingView {
     
 }
 
-//MARK: - Dimensions and constraint parameters for PrimingView
+//MARK: - Dimensions and constraint parameters for PrimingView UI elements
 
 extension PrimingView {
 
