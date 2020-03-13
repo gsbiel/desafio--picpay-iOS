@@ -37,6 +37,14 @@ class PrimingView: UIView {
         return label
     }()
     
+    lazy var registerCardButton: UIButton = {
+        let button = UIButton(frame: CGRect(x: self.registerCardLeadingAnchorConstant, y: self.registerCardTopAnchorConstant, width: self.registerCardWidth, height: self.registerCardHeight))
+        button.backgroundColor = MyUtilityFunctions.hexColor(hexString: "#11C76F")
+        button.layer.cornerRadius = 40
+        button.setAttributedTitle(NSAttributedString(string: "Cadastrar cartao", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 22), NSAttributedString.Key.foregroundColor: UIColor.white]), for: .normal)
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -52,6 +60,7 @@ class PrimingView: UIView {
         self.addSubview(creditCard)
         self.addSubview(mainLabel)
         self.addSubview(secondaryLabel)
+        self.addSubview(registerCardButton)
     }
     
 }
@@ -117,6 +126,24 @@ extension PrimingView {
         return CGFloat( K.primingViewSecondaryLabelLeadingAnchorConstantRef / K.primingViewWidthRef)
     }
     
+    // -----------------------------------------------------------------------------------------------
+    // registerCardButton ----------------------------------------------------------------------------
+    
+    private var registerCardWidthScaleFactor: CGFloat {
+        return CGFloat( K.primingViewRegisterCardWidthRef / K.primingViewWidthRef )
+    }
+    
+    private var registerCardHeightScaleFactor: CGFloat {
+        return CGFloat( K.primingViewRegisterCardHeightRef / K.primingViewHeightRef)
+    }
+    
+    private var registerCardTopAnchorConstantScaleFactor: CGFloat {
+        return CGFloat( K.primingViewRegisterCardTopAnchorConstantRef / K.primingViewHeightRef)
+    }
+    
+    private var registerCardLeadingAnchorConstantScaleFactor: CGFloat {
+        return CGFloat( K.primingViewRegisterCardLeadingAnchorConstantRef / K.primingViewWidthRef )
+    }
     
 }
 
@@ -179,6 +206,25 @@ extension PrimingView {
     
     private var secondaryLabelLeadingAnchorConstant: CGFloat {
         return self.secondaryLabelLeadingAnchorConstantScaleFactor * self.frame.width
+    }
+    
+    // -----------------------------------------------------------------------------------------------
+    // registerCardButton ----------------------------------------------------------------------------
+    
+    private var registerCardWidth: CGFloat {
+        return self.registerCardWidthScaleFactor * self.frame.width
+    }
+    
+    private var registerCardHeight: CGFloat {
+        return self.registerCardHeightScaleFactor * self.frame.height
+    }
+    
+    private var registerCardTopAnchorConstant: CGFloat {
+        return self.registerCardTopAnchorConstantScaleFactor * self.frame.height
+    }
+    
+    private var registerCardLeadingAnchorConstant: CGFloat {
+        return self.registerCardLeadingAnchorConstantScaleFactor * self.frame.width
     }
     
 }

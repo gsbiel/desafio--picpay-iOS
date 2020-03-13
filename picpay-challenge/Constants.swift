@@ -60,4 +60,9 @@ struct K {
     static let primingViewSecondaryLabelHeightRef = 60.0
     static let primingViewSecondaryLabelTopAnchorConstantRef = 340.0
     static let primingViewSecondaryLabelLeadingAnchorConstantRef = 36.0
+    
+    static let primingViewRegisterCardWidthRef = 296.0
+    static let primingViewRegisterCardHeightRef = 48.0
+    static let primingViewRegisterCardTopAnchorConstantRef = 508.0
+    static let primingViewRegisterCardLeadingAnchorConstantRef = 12.0
 }
