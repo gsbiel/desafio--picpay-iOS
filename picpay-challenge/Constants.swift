@@ -13,6 +13,7 @@ struct K {
     static let backGroundTheme = UIColor(red: 0.114, green: 0.118, blue: 0.125, alpha: 1)
     
     static let primingViewMainLabelText = "Cadastre um cartao de credito"
+    static let primingViewSecondaryLabelText = "Para fazer pagamentos para outras pessoas voce precisa cadastrar um cartao de debito pessoal."
     
     
     static let contactsViewBasicReusableHeaderView = "basicReusableView"

@@ -17,22 +17,23 @@ class PrimingView: UIView {
     
     lazy var mainLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: self.mainLabelLeadingAnchorConstant, y: self.mainLabelTopAnchorConstant, width: self.mainLabelWidth, height: self.mainLabelHeight))
-        label.font = UIFont.boldSystemFont(ofSize: 28.0)
+        label.font = UIFont.boldSystemFont(ofSize: 32)
         label.numberOfLines = 0
         label.textColor = .white
-        //label.lineBreakMode = .byWordWrapping
+        label.lineBreakMode = .byWordWrapping
         label.textAlignment = .center
-        
-        var paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineHeightMultiple = 0.96
-        label.attributedText = NSMutableAttributedString(string: K.primingViewMainLabelText, attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
-        
+        label.text = K.primingViewMainLabelText
         return label
     }()
     
     lazy var secondaryLabel: UILabel = {
-        let label = UILabel()
-        
+        let label = UILabel(frame: CGRect(x: self.secondaryLabelLeadingAnchorConstant, y: self.secondaryLabelTopAnchorConstant, width: self.secondaryLabelWidth, height: self.secondaryLabelHeight))
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.numberOfLines = 0
+        label.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.8)
+        label.lineBreakMode = .byWordWrapping
+        label.textAlignment = .center
+        label.text = K.primingViewSecondaryLabelText
         return label
     }()
     
@@ -50,7 +51,7 @@ class PrimingView: UIView {
         self.backgroundColor = K.backGroundTheme
         self.addSubview(creditCard)
         self.addSubview(mainLabel)
-
+        self.addSubview(secondaryLabel)
     }
     
 }
@@ -115,6 +116,8 @@ extension PrimingView {
     private var secondaryLabelLeadingAnchorConstantScaleFactor: CGFloat {
         return CGFloat( K.primingViewSecondaryLabelLeadingAnchorConstantRef / K.primingViewWidthRef)
     }
+    
+    
 }
 
 //MARK: - Dimensions and constraint parameters for PrimingView
