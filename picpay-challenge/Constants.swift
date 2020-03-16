@@ -75,7 +75,9 @@ struct K {
     static let registerCardViewCardNumberAndCardOwnerTxtFieldHeightRef = 20.0
     static let registerCardViewCardNumberTopAnchorConstantRef = 60.0
     static let registerCardViewCardOwnerTopAnchorConstantRef = 64.0 // with respect to cardNumberTxtField element
-    
+    static let registerCardViewExpirationDateAndCvvTxtFieldHorizontalAnchorsRef = 20.0
+    static let registerCardViewExpirationDateAndCvvTxtFieldTopAnchorConstantRef = 68.0
+    static let registerCardViewExpirationDateTrailingAnchorConstantRef = 173.61
     
     
 }

@@ -92,7 +92,7 @@ class RegisterCardView: UIView {
         txtField.translatesAutoresizingMaskIntoConstraints = false
         txtField.attributedPlaceholder = NSAttributedString(string: "CVV", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0.673, green: 0.695, blue: 0.742, alpha: 1)])
         txtField.textColor = .white
-        
+        txtField.keyboardType = .numberPad
         return txtField
     }()
     
@@ -123,8 +123,8 @@ class RegisterCardView: UIView {
         self.addSubview(cardNumberBottomLine)
         self.addSubview(cardOwnerTxtField)
         self.addSubview(cardOwnerBottomLine)
-//        self.addSubview(expirationDateTxtField)
-//        self.addSubview(cvvTxtField)
+        self.addSubview(expirationDateTxtField)
+        self.addSubview(cvvTxtField)
         setupLayout()
     }
     
@@ -161,10 +161,16 @@ class RegisterCardView: UIView {
         cardOwnerBottomLine.heightAnchor.constraint(equalToConstant: 2).isActive = true
         
         // expirationDateTxtField constraints
-        //expirationDateTxtField.topAnchor.constraint(equalTo: <#T##NSLayoutAnchor<NSLayoutYAxisAnchor>#>, constant: <#T##CGFloat#>).isActive = true
+        expirationDateTxtField.topAnchor.constraint(equalTo: cardOwnerTxtField.bottomAnchor, constant: expirationDateAndCvvTxtFieldTopAnchorsConstant).isActive = true
+        expirationDateTxtField.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: expirationDateAndCvvTxtFieldHorizontalAnchorsConstant).isActive = true
+        expirationDateTxtField.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor , constant: -self.expirationDateTrailingAnchorConstant).isActive = true
+        expirationDateTxtField.heightAnchor.constraint(equalToConstant: self.cardNumberAndCardOwnerTxtFieldHeight).isActive = true
         
         // cvvTxtField constraints
-        //cvvTxtField.topAnchor.constraint(equalTo: <#T##NSLayoutAnchor<NSLayoutYAxisAnchor>#>, constant: <#T##CGFloat#>).isActive = true
+        cvvTxtField.topAnchor.constraint(equalTo: cardOwnerTxtField.bottomAnchor, constant: self.expirationDateAndCvvTxtFieldTopAnchorsConstant).isActive = true
+        cvvTxtField.leadingAnchor.constraint(equalTo: expirationDateTxtField.trailingAnchor, constant: self.expirationDateAndCvvTxtFieldHorizontalAnchorsConstant).isActive = true
+        cvvTxtField.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -self.expirationDateAndCvvTxtFieldHorizontalAnchorsConstant).isActive = true
+        cvvTxtField.heightAnchor.constraint(equalToConstant: self.cardNumberAndCardOwnerTxtFieldHeight).isActive = true
         
     }
     
@@ -208,6 +214,21 @@ extension RegisterCardView {
     private var cardOwnerTxtFieldTopAnchorConstantScaleFactor: CGFloat {
         return CGFloat( K.registerCardViewCardOwnerTopAnchorConstantRef / K.primingViewHeightRef )
     }
+    
+    // -----------------------------------------------------------------------------------------------
+    // expirationDateTxtField  and cvvTxtField -------------------------------------------------------
+    
+    private var expirationDateTrailingAnchorConstantScaleFactor: CGFloat {
+        return CGFloat( K.registerCardViewExpirationDateTrailingAnchorConstantRef / K.primingViewWidthRef )
+    }
+    
+    private var expirationDateAndCvvTxtFieldHorizontalAnchorsConstantScaleFactor: CGFloat {
+        return CGFloat( K.registerCardViewExpirationDateAndCvvTxtFieldHorizontalAnchorsRef / K.primingViewWidthRef )
+    }
+    
+    private var expirationDateAndCvvTopAnchorsConstantScaleFactor: CGFloat {
+        return CGFloat( K.registerCardViewExpirationDateAndCvvTxtFieldTopAnchorConstantRef / K.primingViewHeightRef )
+    }
 }
 
 extension RegisterCardView {
@@ -245,4 +266,18 @@ extension RegisterCardView {
         return cardOwnerTxtFieldTopAnchorConstantScaleFactor * self.frame.height
     }
     
+    // -----------------------------------------------------------------------------------------------
+    // expirationDateTxtField  and cvvTxtField -------------------------------------------------------
+    
+    private var expirationDateTrailingAnchorConstant: CGFloat {
+        return self.expirationDateTrailingAnchorConstantScaleFactor * self.frame.width
+    }
+    
+    private var expirationDateAndCvvTxtFieldHorizontalAnchorsConstant: CGFloat {
+        return expirationDateAndCvvTxtFieldHorizontalAnchorsConstantScaleFactor * self.frame.width
+    }
+    
+    private var expirationDateAndCvvTxtFieldTopAnchorsConstant: CGFloat {
+        return expirationDateAndCvvTopAnchorsConstantScaleFactor * self.frame.height
+    }
 }
