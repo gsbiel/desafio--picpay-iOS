@@ -23,7 +23,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let viewController: UIViewController
         //viewController = ContactsViewController()
-        viewController = PrimingViewController()
+        //viewController = PrimingViewController()
+        viewController = RegisterCardViewController()
         
         window!.rootViewController = viewController
         

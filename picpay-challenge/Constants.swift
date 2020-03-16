@@ -15,7 +15,6 @@ struct K {
     static let primingViewMainLabelText = "Cadastre um cartao de credito"
     static let primingViewSecondaryLabelText = "Para fazer pagamentos para outras pessoas voce precisa cadastrar um cartao de debito pessoal."
     
-    
     static let contactsViewBasicReusableHeaderView = "basicReusableView"
     static let contactsViewContactHeaderIdentifier = "contactsCollectionViewHeaderClass"
     static let contactsViewSearchHeaderIdentifier = "contactsCollectionViewReusableSearchHeaderClass"
@@ -65,4 +64,18 @@ struct K {
     static let primingViewRegisterCardHeightRef = 48.0
     static let primingViewRegisterCardTopAnchorConstantRef = 508.0
     static let primingViewRegisterCardLeadingAnchorConstantRef = 12.0
+    
+    
+    static let registerCardViewTitleLabelHorizontalAnchorsConstantRef = 20.0
+    static let registerCardViewTitleLabelWidthRef = 276.0
+    static let registerCardViewTitleLabelHeightRef = 32.0
+    
+    static let registerCardViewCardNumberAndCardOwnerTxtFieldHorizontalAnchorsConstantRef = 20.0
+    static let registerCardViewCardNumberAndCardOwnerTxtFieldWidthRef = 272.22
+    static let registerCardViewCardNumberAndCardOwnerTxtFieldHeightRef = 20.0
+    static let registerCardViewCardNumberTopAnchorConstantRef = 60.0
+    static let registerCardViewCardOwnerTopAnchorConstantRef = 64.0 // with respect to cardNumberTxtField element
+    
+    
+    
 }
