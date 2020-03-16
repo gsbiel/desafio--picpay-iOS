@@ -18,8 +18,9 @@ class RegisterCardView: UIView {
     lazy var titleViewLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Ola praxer"
-        
+        label.text = "Cadastrar cartão"
+        label.font = UIFont.boldSystemFont(ofSize: 28)
+        label.textColor = .white
         return label
     }()
     
@@ -29,14 +30,19 @@ class RegisterCardView: UIView {
     lazy var cardNumberTxtField: UITextField = {
         let txtField = UITextField()
         txtField.translatesAutoresizingMaskIntoConstraints = false
+        txtField.attributedPlaceholder = NSAttributedString(string: "Número do cartão", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0.673, green: 0.695, blue: 0.742, alpha: 1)])
+        txtField.textColor = .white
+        txtField.keyboardType = .numberPad
         
-        txtField.backgroundColor = .blue
         return txtField
     }()
     
     lazy var cardNumberBottomLine: UILabel = {
         let label = UILabel()
-        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.tintColor = UIColor(red: 0.673, green: 0.695, blue: 0.742, alpha: 1)
+        label.layer.borderWidth = 1
+        label.layer.borderColor = UIColor(red: 0.673, green: 0.695, blue: 0.742, alpha: 1).cgColor
         return label
     }()
     
@@ -46,14 +52,18 @@ class RegisterCardView: UIView {
     lazy var cardOwnerTxtField: UITextField = {
         let txtField = UITextField()
         txtField.translatesAutoresizingMaskIntoConstraints = false
-        
-        txtField.backgroundColor = .blue
+        txtField.attributedPlaceholder = NSAttributedString(string: "Nome do titular", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0.673, green: 0.695, blue: 0.742, alpha: 1)])
+        txtField.textColor = .white
+
         return txtField
     }()
     
     lazy var cardOwnerBottomLine: UILabel = {
         let label = UILabel()
-        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.tintColor = UIColor(red: 0.673, green: 0.695, blue: 0.742, alpha: 1)
+        label.layer.borderWidth = 1
+        label.layer.borderColor = UIColor(red: 0.673, green: 0.695, blue: 0.742, alpha: 1).cgColor
         return label
     }()
     
@@ -63,7 +73,8 @@ class RegisterCardView: UIView {
     lazy var expirationDateTxtField: UITextField = {
         let txtField = UITextField()
         txtField.translatesAutoresizingMaskIntoConstraints = false
-        
+        txtField.attributedPlaceholder = NSAttributedString(string: "Vencimento", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0.673, green: 0.695, blue: 0.742, alpha: 1)])
+        txtField.textColor = .white
         return txtField
     }()
     
@@ -79,6 +90,8 @@ class RegisterCardView: UIView {
     lazy var cvvTxtField: UITextField = {
         let txtField = UITextField()
         txtField.translatesAutoresizingMaskIntoConstraints = false
+        txtField.attributedPlaceholder = NSAttributedString(string: "CVV", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0.673, green: 0.695, blue: 0.742, alpha: 1)])
+        txtField.textColor = .white
         
         return txtField
     }()
@@ -107,7 +120,9 @@ class RegisterCardView: UIView {
         self.backgroundColor = K.backGroundTheme
         self.addSubview(titleViewLabel)
         self.addSubview(cardNumberTxtField)
+        self.addSubview(cardNumberBottomLine)
         self.addSubview(cardOwnerTxtField)
+        self.addSubview(cardOwnerBottomLine)
 //        self.addSubview(expirationDateTxtField)
 //        self.addSubview(cvvTxtField)
         setupLayout()
@@ -127,11 +142,23 @@ class RegisterCardView: UIView {
         cardNumberTxtField.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -self.cardNumberAndCardOwnerTxtFieldHorizontalAnchorsConstant).isActive = true
         cardNumberTxtField.heightAnchor.constraint(equalToConstant: self.cardNumberAndCardOwnerTxtFieldHeight).isActive = true
         
+        // cardNumberBottomLine constraints
+        cardNumberBottomLine.topAnchor.constraint(equalTo: cardNumberTxtField.bottomAnchor, constant: 3).isActive = true
+        cardNumberBottomLine.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: self.cardNumberAndCardOwnerTxtFieldHorizontalAnchorsConstant).isActive = true
+        cardNumberBottomLine.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -self.cardNumberAndCardOwnerTxtFieldHorizontalAnchorsConstant).isActive = true
+        cardNumberBottomLine.heightAnchor.constraint(equalToConstant: 2).isActive = true
+        
         // cardOwnerTxtField constraints
         cardOwnerTxtField.topAnchor.constraint(equalTo: cardNumberTxtField.bottomAnchor, constant: cardOwnerTxtFieldTopAnchorConstant).isActive = true
         cardOwnerTxtField.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: self.cardNumberAndCardOwnerTxtFieldHorizontalAnchorsConstant).isActive = true
         cardOwnerTxtField.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -self.cardNumberAndCardOwnerTxtFieldHorizontalAnchorsConstant).isActive = true
         cardOwnerTxtField.heightAnchor.constraint(equalToConstant: self.cardNumberAndCardOwnerTxtFieldHeight).isActive = true
+        
+        // cardOwnerBottomLine
+        cardOwnerBottomLine.topAnchor.constraint(equalTo: cardOwnerTxtField.bottomAnchor, constant: 3).isActive = true
+        cardOwnerBottomLine.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: cardNumberAndCardOwnerTxtFieldHorizontalAnchorsConstant).isActive = true
+        cardOwnerBottomLine.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -self.cardNumberAndCardOwnerTxtFieldHorizontalAnchorsConstant).isActive = true
+        cardOwnerBottomLine.heightAnchor.constraint(equalToConstant: 2).isActive = true
         
         // expirationDateTxtField constraints
         //expirationDateTxtField.topAnchor.constraint(equalTo: <#T##NSLayoutAnchor<NSLayoutYAxisAnchor>#>, constant: <#T##CGFloat#>).isActive = true
